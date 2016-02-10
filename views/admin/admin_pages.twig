@@ -1,0 +1,23 @@
+{% include 'admin_header.twig' %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-9 col-md-10  main">
+			<h1>pages</h1>
+			<h3>Add a page</h3>
+			<form action="/admin/page/new" method="POST">
+				<input autofocus type="text" name="title" value=""></input>
+			</form>
+			<table class="table table-bordered">
+				<tbody>
+					{% for item in data %}
+						<tr id="item-{{item.id}}">
+							<td><a href="page/{{item.id}}">{{item.title}}</a></td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% include 'sidebar.twig' %}
+	</div>
+</div>
+{% include 'admin_footer.twig' %}

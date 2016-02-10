@@ -1,0 +1,44 @@
+{% extends "base.twig" %}
+{% block content %}{% if jumbotron is defined %}
+	<div class="jumbotron">
+		{{strap | raw}}
+	</div>
+{% endif %}
+<div class="container">
+	<div id="main-content"  class="col-xs-{{layout.main_content_col |default('8')}}">
+		<div class="row row-margin-bottom">
+			<div class="boxinner whitebg">
+				<h1>{{title }}</h1>
+				{{body | raw}}
+			</div>
+		</div>
+		{% if promoboxes is defined %}
+			{{ promoboxes | raw }}
+			<div class="row row-margin-bottom">
+				{% for value in promoboxes %}
+					<div class="col-xs-4">
+						<div class="boxinner whitebg">
+							<h2>{{value.title}}</h2>
+							<img class="img-responsive" src="{{value.thumbnail}}"/>
+							{{value.map | raw}}
+							{{value.body | raw}}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+</div>
+{% if sidebar is defined %}
+	{% for item in sidebar %}
+		<div class="col-md-4">
+			<div class="boxinner whitebg">
+				<h2>{{item.title}}</h2>
+				<h3>{{item.subtitle}}</h3>
+				{{item.body | raw}}
+				<img class="img-right img-thumb-140 img-text" src="{{item.img}}">
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}
+{% endblock %}

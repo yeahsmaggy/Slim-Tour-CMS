@@ -1,0 +1,50 @@
+{% extends "base.twig" %}
+{% block content %}
+	<div class="row min-height-footer">
+		<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+			<div class="boxinner whitebg">
+				<h1>
+				<a id="book" name="book">Send a contact enquiry</a>
+				</h1>
+				<p>
+				Please enter your details below and you will be contacted shortly.</a>
+			</p>
+			<p>
+				For general enquiries, enquiries regarding rentals and custom tours please email us on
+				<p>Email: <a href="">site email address</a> </p>
+				Country Contact:<br>+num (Contact Name)<br>
+				Country Contact 2:<br>+num (Contact Name)<br>
+			</p>
+			{% if message is defined %}
+			<div class="alert alert-success fade in">
+				<a href="#" class="close" data-dismiss="alert">&times;</a>
+				{{message}}
+			</div>
+			{% endif %}
+			<div class="bootstrap form item">
+				<form action="/contact/send" method="post">
+					<fieldset>
+						<div class="controls">
+							<input class="textfield form-control" name="cust_ref" placeholder="" required="" type="hidden" value="">
+							<br>
+							<input class="textfield form-control" name="your_name" placeholder="Enter your name" required="required" type="text" value="" required>
+							<br>
+							<input class="textfield form-control" name="phone_number" placeholder="Enter your phone number" required="required" type="number" value="" required>
+							<br>
+							<input class="textfield form-control" name="email_address" placeholder="Enter your email address" required="required" type="email" value="" required>
+							<br>
+							<textarea class="textfield form-control" name="your_message" placeholder="Enter your message" required="required" type="text" rows="5" value="" required></textarea>
+							<br>
+							<input name="save" required="required" type="hidden" value="contact">
+							<button class="btn btn-green" type="submit">Send</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<p>
+				<a href="mailto:georidersmtb@gmail.com" target="_blank"></a>
+			</p>
+		</div>
+	</div>
+	<div class="col-lg-4"></div>
+{% endblock %}

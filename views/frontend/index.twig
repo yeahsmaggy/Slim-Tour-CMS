@@ -1,0 +1,77 @@
+{% extends "base.twig" %}
+{% block content %}
+  <!-- Full Page Image Background Carousel Header -->
+  <div id="myCarousel" class="carousel slide hidden-xs" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for Slides -->
+    <div class="carousel-inner">
+      {% for tour in data.featured %}
+        <div class="item {% if loop.first %} active {% endif %}">
+        <img src="/img/background_images/slide-{{tour.background_image}}" class="img-responsive"/>
+        <div class="carousel-caption">
+          <h2><a href="/tour/{{tour.alias}}/">{{tour.strap}}</a></h2>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>
+<div class="strip bg-grey">
+  <div class="container ">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <div class=" row-margin-bottom">
+          <h2 class="strapline">{{strapline | raw}}</h2>
+          {{welcome_text | raw}}
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <div class="">
+          <h2>Latest from the blog</h2>
+          <ul>
+            {% for node in nodes %}
+              <li style="text-transform:capitalize"><a href="blog/node/{{node.nid}}">{{node.title|capitalize}}</a></li>
+            </a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="strip whitebg">
+<div class="container ">
+  {# if tour_promoboxes#}
+  {% if promoboxes is defined %}
+    {% for promobox in promoboxes|batch(4) %}
+      <div class="row row-margin-bottom">
+        {% for value in promobox %}
+          <div class="col-xs-12 col-sm-3" >
+            <div class="" style="min-height:460px;" >
+              <a href="/tour/{{value.alias}}">
+                <img src="/img/background_images/thumb-{{value.background_image}}"  class="img-responsive" alt="{{value.name}}"/></br>
+                <h3>{{value.name}}</h3>
+                {{value.strap}}
+                <p class="excerpt-text">
+                  {{value.summary}}
+                </p></a>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

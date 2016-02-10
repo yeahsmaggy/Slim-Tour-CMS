@@ -1,0 +1,38 @@
+{% include 'admin_header.twig' %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9  col-md-10  main">
+			<h1>{{data.title}}</h1>
+			<a style="color:red; bottom:50px;position:fixed;right:50px; border:1px solid black; border-radius:5px;background:black;" class="btn" href="/admin/page/{{data.id}}/delete">Delete</a>
+			<div id="data-{{data.id}}">
+				<div id="pageid" data-service="{{data.id}}"></div>
+				<form action="/admin/page/{{data.id}}/update" method="POST" id="page_form" enctype="multipart/form-data">
+					<div class="row">
+						<label for="page-title">page title</label><input type="text" class="form-control" id="page-title" title="Enter page title" name="title" size="30" value="{{data.title}}" autocomplete="off"></input>
+						<label for="page-alias">Alias</label><input type="text" class="form-control" id="alias" title="Enter alias" name="alias" size="30" value="{{data.alias|default('alias')}}" autocomplete="off"></input>	</div>
+						<div class="row">
+							<b>description</b>
+							<textarea class="editable form-control" rows="5	" name="description" value="{{data.description}}">{{data.description}}</textarea>
+						</div>
+						<div class="row">
+							<b>page_javascript</b>
+							<textarea class="editable form-control" rows="2" name="page_javascript" value="{{data.page_javascript}}">{{data.page_javascript}}</textarea>
+						</div>
+						<div class="row">
+							<b>strap</b>
+							<textarea class="editable form-control" rows="2" name="strap" value="{{data.strap}}">{{data.strap}}</textarea>
+						</div>
+						<div class="row">
+							<b>body</b>
+							<label for="showtextarea">show html?</label>
+							<input id="showtextarea" class="form-control" type="checkbox"></input>
+							<textarea id="pagebody" class="editable form-control" rows="20" name="body" value="{{data.body}}">{{data.body}}</textarea>
+						</div>
+						<input id="page-submit" type="submit" value="Submit">
+					</form>
+				</div>
+			</div>
+			{% include 'sidebar.twig' %}
+		</div>
+	</div>
+	{% include 'admin_footer.twig' %}

@@ -1,0 +1,104 @@
+{% include 'admin_header.twig' %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9  col-md-10  main">
+			<div id="message" class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert">&times;</a>{{data.message}}</div>
+			<div id="data-{{data.id}}">
+				<div id="pageid" data-service="{{data.id}}"></div>
+				<p>Hello, please fill in the form with your details so we can better serve you on your tour with us. Thanks!</p>
+				<form action="/admin/profile/update" method="POST" id="page_form" enctype="multipart/form-data">
+					<h3>Your Profile</h3>
+					<div class="row">
+						<div class="col-xs-6"><b>First Name</b>
+							<input class=" form-control" rows="2" name="first_name" value="{{data.first_name}}">
+						</div>			<div class="col-xs-6">	<b>Last Name</b>
+						<input class=" form-control" rows="2" name="last_name" value="{{data.last_name}}">
+					</div></div>
+					<div class="row">
+						<div class="col-xs-6">
+<!-- 							<b>Email</b>
+ --><!-- 							<input class=" form-control" rows="2" name="email" value="{{data.email}}">
+ -->						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">	<b>Age</b>
+							<input class=" form-control" rows="2" name="age" value="{{data.age}}">
+						</div>
+						<div class="col-xs-6">
+							<b>Height (cm) </b>
+							<input type="text" class=" form-control" rows="2" name="height" value="{{data.height}}">
+						</div>
+						<div class="col-xs-6"><b>Any health conditions?</b><input type="text" class=" form-control" rows="2" name="health_condition" value="{{data.health_condition}}"></div>
+						<div class="col-xs-6"><b>Dietary Requirements</b>
+							<select class="form-control" id="dietary-requirements" title="Enter dietary requirement" name="dietary_requirements" value="{{data.dietary_requirements}}">
+								<option value="default" >-choose-</option>
+								<option value="veg" {% if data.dietary_requirements == 'veg' %}selected {% endif %}>veg</option>
+								<option value="non-veg" {% if data.dietary_requirements == 'non-veg' %}selected {% endif %}>non-veg</option>
+							</select>
+						</div>
+						<div class="col-xs-6"><b>Insurance policy number</b><input type="text" class=" form-control" rows="2" name="insurance" value="{{data.insurance}}"></div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<b>Bike Type</b>
+							<select class="form-control" id="bike-type" title="Enter bike type" name="type_of_bike" value="{{data.type_of_bike}}">
+								<option value="default" >-choose-</option>
+								<option value="full-suspension" {% if data.type_of_bike == 'full-suspension' %}selected {% endif %}>Full Suspension</option>
+								<option value="hardtail" {% if data.type_of_bike == 'hardtail' %}selected {% endif %}>Hardtail</option>
+							</select>
+						</div>
+						<div class="col-xs-6">
+							<b>Bike Size Needed</b><input type="text" class=" form-control" rows="2" name="bike_size" value="{{data.bike_size}}">
+						</div>
+						<div class="col-xs-6"><b>Helmet</b><input id="helmet" type="checkbox" class=" form-control" name="helmet" {% if data.helmet == 1 %} checked {% endif %}></input></div>
+						<div class="col-xs-6"><b>Gloves</b><input id="gloves" type="checkbox" class=" form-control" name="gloves" {% if data.gloves == 1 %} checked {% endif %}></input></div>
+						<div class="col-xs-6">
+							<b>Pedal Type</b>
+							<select class="form-control" id="pedal-type" title="Enter pedal type" name="pedal_type" value="{{data.pedal_type}}">
+								<option value="default" >-choose-</option>
+								<option value="Clipless" {% if data.pedal_type == 'Clipless' %}selected {% endif %}>Clipless</option>
+								<option value="Flat" {% if data.pedal_type == 'Flat' %}selected {% endif %}>Flat</option>
+							</select>
+						</div>
+						<div class="col-xs-6"><b>Skill Level</b>
+							<select class="form-control" id="skill-level" title="Enter skill level" name="skill_level" value="{{data.skill_level}}">
+								<option value="default" >-choose-</option>
+								<option value="high" {% if data.skill_level == 'high' %}selected {% endif %}>High</option>
+								<option value="medium" {% if data.skill_level == 'medium' %}selected {% endif %}>Medium</option>
+								<option value="low" {% if data.skill_level == 'low' %}selected {% endif %}>Low</option>
+							</select>
+						</div>
+					</div>
+					<!-- individual booking info
+					TODO - could make a booking table for multiple bookings if a customer comes more than once-->
+					<h3>Your Holiday</h3>
+					<div class="row">
+						<div class="col-xs-6">
+							<b>Type of Room Needed</b>
+							<select class="form-control" id="room-type" title="Enter room type" name="room_type" value="{{data.room_type}}">
+								<option value="default" >-choose-</option>
+								<option value="single" {% if data.room_type == 'single' %}selected {% endif %}>single</option>
+								<option value="double" {% if data.room_type == 'double' %}selected {% endif %}>double</option>
+								<option value="twin" {% if data.room_type == 'twin' %}selected {% endif %}>twin</option>
+							</select>
+							</div><div class="col-xs-6"><b>Number of Nights</b><input type="number" class=" form-control" rows="2" name="number_nights" value="{{data.number_nights}}"></div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6"><b>Flight Number</b><input type="text" class=" form-control" rows="2" name="flight_number" value="{{data.flight_number}}"></div>
+							<div class="col-xs-6"><b>Flight Time</b><input type="text" class=" form-control" rows="2" name="time_of_flight" value="{{data.time_of_flight}}"></div>
+							<div class="col-xs-6"><b>Transfer Time</b><input type="text" class=" form-control" rows="2" name="time_of_transfer" value="{{data.time_of_transfer}}"></div>
+						</div>
+						<div class="row">
+						</div>
+						<div class="row">
+							<div class="col-xs-12"><b>Additional Details</b>
+								<textarea id="additional_info" class=" form-control" rows="5" name="additional_info" value="{{data.additional_info}}">{{data.additional_info}}</textarea>
+							</div>		</div>
+							<input id="page-submit" type="submit" value="Submit">
+						</form>
+					</div>
+				</div>
+				{% include 'sidebar.twig' %}
+			</div>
+		</div>
+		{% include 'admin_footer.twig' %}

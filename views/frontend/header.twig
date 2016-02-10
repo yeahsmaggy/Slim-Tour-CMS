@@ -1,0 +1,102 @@
+<header>
+  <div class="container">
+    <div class="navbar navbar-default">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+        <div class="site-name">
+          <a class="navbar-brand" href="/">
+            <img src="/img/full-logo.png" alt="Georiders Mountain Bike and Bicycle Tours in Georgia"/>
+          </a>
+        </div>
+      </div>
+      <div id="header-translate" class="header-box">
+        <div id="google_translate_element"></div>
+        <script type="text/javascript">
+        function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'az,de,hy,ka,ru'}, 'google_translate_element');
+        }
+        </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      </div>
+      <div id="header-contact" class="hidden-xs header-box">
+        <span class="header-telephone-country1"><img src="/img/iconflags/flag1.png" alt="">num 1</span>
+        <span class="header-telephone-country2"><img src="/img/iconflags/flag2.png" alt="">num 2</span>
+        <span class="header-email"><img src="/img/iconflags/email_icon.png" alt=""><a href="site email">site email address</a></span>
+      </div>
+      <div id="header-social" class="hidden-xs header-box">
+        <ul>
+          <li><a target="_blank"  href="http://www.facebook.com/your-social-media-site-name"><img src="/img/social/facebook.png"/></a></li>
+          <li><a target="_blank" href="http://www.twitter.com/your-social-media-site-name"><img src="/img/social/twitter.png"/></a></li>
+          <li><a target="_blank" href="https://www.youtube.com/user/your-social-media-site-name"><img src="/img/social/youtube.png"/></a></li>
+          <li><div class="fb-like" data-href="http://www.your-social-media-site-name.com" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div></li>
+        </ul>
+      </div>
+      <div id="header-search" class="header-box">
+        <script>
+        (function() {
+        var cx = '016522603896035662716:lytme23iifs';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.com/cse/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+        })();
+        </script>
+        <script type="text/javascript">
+        $(function() {
+        $.backstretch(["/img/background_images/{{background_image}}"]);
+        $( "#accordion" ).accordion({
+        collapsible: true
+        });
+        });
+        </script>
+      <gcse:search></gcse:search>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            About <strong class="caret"></strong>
+          </a>
+          <ul class="dropdown-menu">
+            {% for i in menu %}
+              <li><a href="/{{i.alias}}">{{i.title}}</a>
+            {% endfor %}
+          </ul>
+        </li>
+        <li>
+          <a  href="/tours">
+            Tours
+          </a>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Contact
+            <strong class="caret"></strong>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="/contact">Contact Form</a>
+            </li>
+            <li class="divider"></li>
+            <li class="nav-header">Social</li>
+            <li>
+              <a href="https://www.facebook.com/Georiders/" target=
+              "_blank">Facebook Page</a>
+            </li>
+            <li>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="/blog/">Blog</a>
+        </li>
+      </ul>
+    </div></div>
+  </div>
+</header>

@@ -1,0 +1,610 @@
+
+
+@import "bootstrap";
+@import "geo_responsive";
+
+@font-face {
+    // font-family: 'vitesse';
+    // src: url(../fonts/Vitesse/Vitesse-Light.otf);
+}
+
+//variables
+//layout
+$margin-base: 10px !default;
+$padding-base: 10px !default;
+
+//colours
+$white: #fff;
+$black: #000;
+$blue: #369;
+$grey: #333333;
+
+body, html {overflow-x:hidden;}
+
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    background-color:$white;
+    color: $black;
+}
+
+
+.home-blog-thumb-wrap {
+    img {
+        min-width: 100%;
+    }
+}
+
+//#######################################//
+//helper classes
+//#######################################//
+a.btn {
+    color: white !important;
+}
+
+.clear-block {
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+//#######################################//
+//fonts
+//#######################################//
+
+
+a {
+    &:link {
+        color: $blue;
+    }
+    &:active {}
+    &:visited {
+        color: $blue;
+    }
+    &:hover, &:focus {
+        text-decoration: none;
+    }
+}
+
+h1.strapline {
+}
+
+.quoteauthor {
+    display: block;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding-left: 20px;
+    font-size: 0.9em;
+}
+
+.small-print {
+    font-size: 0.8em;
+    padding: 0px 5px 0px 5px;
+    line-height: 15px;
+    text-align: justify;
+}
+
+//#######################################//
+//layout
+//#######################################//
+
+
+.strip {
+    padding: 50px 0px;
+}
+
+.boxinner {
+    padding: 20px;
+    float: left;
+    width: 100%;
+}
+
+//#######################################//
+//background
+//#######################################//
+
+.bg-white {
+    background-color: rgba(230, 240, 247, 0.9);
+        padding: 15px;
+}
+
+.bg-grey {
+  background-color: $grey;
+}
+//#######################################//
+//nav
+//#######################################//
+
+
+.navbar-collapse.in {
+    width:100%;
+    float:left;
+}
+
+.navbar .nav > li > a {
+    padding: 16px 20px 10px;
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 1.1em;
+}
+
+.dropdown-menu > li > a {
+    clear: both;
+    color: #333333 !important;
+    display: block;
+    font-weight: normal;
+    line-height: 20px;
+    padding: 3px 20px;
+    white-space: nowrap;
+}
+
+
+.navbar-inverse .nav-collapse {
+    .nav > li > a, .dropdown-menu a {
+        color: white !important;
+    }
+}
+
+.dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+ul.about-menu li a {
+    color: white;
+}
+
+.navbar-default {
+    background-color: #E6F0F7;
+    border: none;
+}
+
+.navbar-brand {
+    height: auto;
+}
+
+//#######################################//
+//tour detail page
+//#######################################//
+ul.itinerary-details {
+    font-size: 0.9em;
+}
+
+ul.itinerary-details  li {
+    margin-bottom: $margin-base;
+}
+
+.itinerary {
+    font-size: 0.8em;
+}
+
+.ui-tabs .ui-tabs-nav {
+    .ui-tabs-anchor {
+        display: block;
+    }
+}
+
+.ui-tabs .ui-tabs-nav .ui-tabs-anchor {
+    width: inherit !important;
+}
+
+.tour-status li {
+    text-align: center;
+    margin-bottom: $margin-base;
+    list-style: none;
+    padding: 2px 0px 2px 0px;
+    &.live {
+        background: #EFA14E !important;
+    }
+    &.inactive {
+        background: #95A43D !important;
+    }
+}
+
+
+//#######################################//
+//footer
+//#######################################//
+footer {
+    background: #E6F0F7;
+    font-size: 0.8em;
+    display: block;
+    float: left;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.footer-copyright {
+    text-align: center;
+}
+
+
+
+.btn-book {
+    margin-bottom: $margin-base;
+    display: block;
+    min-width: 70px;
+    color: white !important;
+    background: #EFA14E;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-decoration: none !important;
+}
+
+.btn-book {
+    &:hover {
+        background: white;
+        color: #000 !important;
+    }
+    a {
+        color: white !important;
+    }
+}
+
+.btn-act {
+    background: #ED4224;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    text-decoration: none !important;
+    margin-bottom: $margin-base;
+    min-width: 70px;
+    color: white !important;
+    &:hover {
+        background: white;
+        color: #000 !important;
+    }
+    a {
+        color: white !important;
+    }
+}
+
+//####################################//
+//google search
+//####################################//
+.gsc-control-cse {
+    border-color: transparent !important;
+    background-color: transparent !important;
+}
+
+td.gsc-search-button {
+    width: 1%;
+    display: none !important;
+}
+
+.search {
+    float: right;
+    margin-top: 58px;
+    width: 200px;
+    margin-right: -20px;
+}
+
+.gsc-control-cse {
+    border-color: transparent !important;
+    background-color: transparent !important;
+}
+
+td.gsc-search-button {
+    width: 1%;
+    display: none !important;
+}
+.cse .gsc-control-cse, .gsc-control-cse {padding:0px !important;}
+
+
+//####################################//
+//carousel
+//####################################//
+
+#myCarousel img {margin:0 auto;}
+
+html,
+body {
+    height: 100%;
+}
+.carousel,
+.item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-caption {
+    top:20px;
+    a {color:white;}
+}
+
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+div.slide h4 {
+    font-size: 22px !important;
+}
+
+.html_carousel div.slide div {
+    display: none !important;
+}
+
+.html_carousel div.slide {
+    position: relative;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+    div {
+        width: auto;
+        display: none;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        margin: 20px 10px;
+        -webkit-border-radius: 10px 10px;
+        -moz-border-radius: 10px / 10px;
+        border-radius: 10px / 10px;
+    }
+    p {
+        font-size: 14px !important;
+        padding: 10px 30px 30px 30px;
+    }
+    h4, p {
+        color: white;
+        margin: 0;
+    }
+    h4 {
+        font-family: 'vitesse';
+        font-weight: 200;
+        font-size: 3em;
+        padding: $padding-base;
+        text-align: center;
+        font-style: normal !important;
+    }
+    ul {
+        color: white;
+        padding: 10px 30px 30px;
+        font-size: 14px !important;
+    }
+}
+
+//####################################//
+//gallery
+//####################################//
+#galleryList li a {
+    background-color: #FFF;
+    border: 0px;
+    display: block;
+    padding: 0px !important;
+    border: none !important;
+}
+
+#galleryFooter {
+    border-top: 0px;
+    margin-top: $margin-base;
+    padding: 3px;
+    border: none !important;
+}
+
+#galleryList li {
+    margin: 5px 5px !important;
+}
+
+//####################################//
+//header
+//####################################//
+.brand {
+    color: white !important;
+    font-family: vitesse;
+    font-size: 36px !important;
+    margin-left: $margin-base !important;
+    padding-left: 0 !important;
+}
+
+.logo-font {
+    font-family: vitesse;
+    font-size: 26px;
+    color: white;
+    font-weight: 100;
+}
+
+#header-contact {
+    float: right;
+    position: relative;
+    font-size: 0.8em;
+    span {
+        display: block;
+        clear: both;
+        margin-bottom: -1px;
+        padding: 2px 0px 0px 0px;
+    }
+    img {
+        float: right;
+        margin-top: 1px;
+        margin-left: 5px;
+        padding-right: 10px;
+        width: 20px !important;
+    }
+}
+
+#header-social {
+    position: relative;
+    float: right;
+    text-align: right;
+    ul li {
+        display: inline;
+    }
+    ul {margin:0px;
+        padding:0px;}
+}
+
+.header-box {
+    float: right;
+    text-align: right;padding:5px;
+}
+
+#header-translate{
+    float:left !important;
+    .goog-te-combo {float:left;}
+}
+
+#header-search {
+    float: right;
+    width: 200px;
+    clear:right;
+}
+
+
+//####################################//
+//blog
+//####################################//
+.blog-teaser-links li a {
+    z-index: 20000;
+    display: block;
+}
+
+//####################################//
+//jumbotron
+//####################################//
+
+.jumbotron {
+    position: relative;
+}
+
+.jumbotron {
+    background: none;
+    padding: 20px;
+    min-height: 450px;
+    color: white !important;
+    blockquote {
+        font-size: 2em;
+    }
+    blockquote:before,
+    a,blockquote {
+        color: white !important;
+    }
+    cite {
+        float: right;
+    }
+}
+
+.jumbotron h1 {
+    text-shadow: 0px 2px 3px #555555;
+}
+
+.hero-unit {
+    background-color: #EEEEEE;
+    border-radius: 6px 6px 6px 6px;
+    color: inherit;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    margin-bottom: $margin-base;
+    padding: 60px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    color: white;
+    font-size: 2em;
+    padding: 20px;
+    letter-spacing: -0.03em;
+    line-height: 1em;
+    text-shadow: 0px 2px 3px #555555;
+    font-family: 'vitesse';
+}
+
+//####################################//
+//home page
+//####################################//
+.tour-thumb-img {
+    padding-bottom: 20px;
+}
+
+.tour-thumb-img {
+    padding-bottom: 20px;
+}
+
+.read-more {
+    clear: left;
+    font-size: 0.9em;
+    display: block;
+    text-align: right;
+    margin-top: $margin-base;
+}
+
+//####################################//
+//misc
+//####################################//
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    background: url("images/ui-bg_glass_75_e6e6e6_1x400.png") repeat-x scroll 50% 50% #e6e6e6;
+    border: 1px solid #D3D3D3;
+    color: black !important;
+    font-weight: normal;
+}
+
+.row-one {
+    padding: 0px !important;
+}
+
+.mc--iframe-responsive-wrapper {
+    visibility: hidden;
+}
+
+.mc--iframe-responsive-wrapper .mc--iframe {
+    margin-top: -1000px !important;
+}
+
+.row-margin-bottom, table.prices {
+    margin-bottom: $margin-base;
+}
+
+ul.tour-status {
+    margin-left: 0px !important;
+}
+
+.front-page-tour-desc, .front-page-tour-heading {
+    padding-left: 5px;
+}
+
+.itinerary-list {
+    list-style: none;
+}
+
+.modal-body {
+    color: black;
+}
+
+ul.extra-links {
+    margin: 0px;
+    li {
+        a.btn:first-child {
+            margin: 0px;
+        }
+        list-style: none;
+        margin-bottom: $margin-base;
+    }
+}
+
+table.prices {
+    margin-bottom: 13px;
+}
+
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
+    border: 1px solid #999;
+}
+
+.top-blue-banner {
+    background-color: #E6F0F7;
+    position: absolute;
+    width: 100%;
+    height: 64px;
+    top: 0px;
+    z-index: -1;
+}

@@ -1,0 +1,147 @@
+{% include 'admin_header.twig' %}
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9  col-md-10  main">
+			<h1>Tour {{data.name}}</h1>
+			<a style="color:red; bottom:50px;position:fixed;right:50px; border:1px solid black; border-radius:5px;background:black;" class="btn" href="/admin/tour/{{data.id}}/delete">Delete</a>
+			<div id="data-{{data.id}}">
+				<div id="tourid" data-service="{{data.id}}"></div>
+				<form action="/admin/tour/{{data.id}}/update" method="POST" id="tour_form" enctype="multipart/form-data">
+					<div class="row">
+						<label for="tour-name">Tour Name</label><input type="text" class="form-control" id="tour-name" title="Enter tour name" name="name" size="30" value="{{data.name}}" autocomplete="off"></input>
+						<label for="tour-name">Alias</label><input type="text" class="form-control" id="alias" title="Enter alias" name="alias" size="30" value="{{data.alias|default('alias')}}" autocomplete="off"></input>
+						<label for="tour_code">Tour Code</label><br>
+						<input id="tour_code" class="form-control" type="text" name="tour_code" title="Enter the Tour Code" value="{{data.tour_code}}"></input>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<label for="live">Is this tour live?</label>
+							<input id="live" class="form-control" type="checkbox" name="live" {{data.live}}></input>
+						</div>
+						<div class="col-sm-12">
+							<label for="published">Is this tour published?</label>
+							<input id="published" class="form-control" type="checkbox" name="published" {% if data.published == '1' %}  checked {% endif %}></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<label for="featured">Is this tour featured?</label>
+							<input id="featured" class="form-control" type="checkbox" name="featured" {{data.featured}}></input>
+						</div>
+					</div>
+					<div class="row">
+						<label for="tour-type">Tour Type</label>
+						<select class="form-control" id="tour-type" title="Enter tour type" name="type" value="{{data.type}}" >
+							<option value="">Select</option>
+							<option value="City" {% if data.type == 'City' %}selected {% endif %}>City</option>
+							<option value="Bike" {% if data.type == 'Bike' %}selected {% endif %}>Bike</option>
+							<option value="Walk" {% if data.type == 'Walk' %}selected {% endif %}>Walk</option>
+							<option value="Food" {% if data.type == 'Food' %}selected {% endif %}>Food</option>
+							<option value="Historical" {% if data.type == 'Historical' %}selected {% endif %}>Historical</option>
+							<option value="Other" {% if data.type == 'Other' %} selected {% endif %}>Other</option>
+						</select>
+					</div>
+					<div class="row">
+						<label for="tour-subtype">Tour Subtype</label>
+						<select class="form-control" id="tour-subtype" title="Enter tour subtype" name="subtype" value="{{data.subtype}}" >
+							<option value="">Select</option>
+							<option value="Full-Tour" {% if data.subtype == 'Full-Tour' %}selected {% endif %}>Full Tour</option>
+							<option value="Day-Trip" {% if data.subtype == 'Day-Trip' %}selected {% endif %}>Day Trip</option>
+						</select>
+					</div>
+					<div class="row">
+						<b>Strapline?</b>
+						<textarea type="text" class="form-control" id="tour-strapline" rows="2" title="Enter tour strapname" name="strap" value="{{data.strap}}" autocomplete="off">{{data.strap}}</textarea>
+						<b>Summary</b>
+						<textarea class="editable form-control" rows="5" name="summary" value="{{data.summary}}">{{data.summary}}</textarea>
+					</div>
+					<div class="row">
+						<label for="gallery_path">Gallery Folder Name</label>
+						<input class="form-control" id="gallery_path" type="text" name="gallery_path" title="Enter the Gallery Name" value="{{data.gallery_path}}" disabled>
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<b>Itinerary</b>
+							<br><button type="button" id="add-itin">add another</button>
+							<div id="itinerary">
+								{% for item in itinerary %}
+									<article>
+										<button class="remove"  type="button" class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-minus"></span>
+										</button>
+										<input style="width:80%;" class="itinitems" id="itin-{{loop.index0}}" type="text" value="{{item | e}}" name="itin[]"  autocomplete="off"></input><br>
+									</article>
+								{% endfor %}
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<b>tour_facts</b>
+							<br><button type="button" id="add-tour">add another</button>
+							<div id="tour_facts">
+								{% for item in tour_facts %}
+									<article>
+										<button class="remove"  type="button" class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-minus"></span>
+										</button>
+										<input style="width:80%;" class="tourfactitems" id="tour_facts-{{loop.index0}}" type="text" value="{{item | e}}" name="tour_facts[]"  autocomplete="off"></input><br>
+									</article>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<label for="difficulty_rating">Difficulty Rating</label>
+							<input id="difficulty_rating" class="form-control" type="text" name="difficulty_rating" title="Enter the Difficulty Rating" value="{{data.difficulty_rating}}"></input>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3"><label for="start_date">Start Date</label>
+						<input id="start_date"  class="form-control" type="date" name="start_date" title="Enter the Start Date" value="{{data.start_date}}"></input>
+					</div>
+					<div class="col-sm-3"><label for="end_date">End Date</label>
+					<input id="end_date" class="form-control" type="date" name="end_date" title="Enter the End Date" value="{{data.end_date}}"></input>
+				</div>
+				<div class="col-sm-3"><label for="total_days">Total Days</label>
+				<input id="total_days"  class="form-control" type="text" name="total_days" title="Enter the Total Days" value="{{data.total_days}}"></input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="price">Price</label>
+				<input id="price" class="form-control" type="text" name="price" title="Enter the Price" value="{{data.price}}"></input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<!-- is this still useful?? -->
+				<label for="number_of_bookings">Number of Bookings</label>
+				<input id="number_of_bookings" class="form-control" type="text" name="bookings" title="Enter the Bookings" value="{{data.bookings}}"></input>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<label for="background_image">Upload a background image
+					<br>Existing image: <br>
+					{% if data.background_image != false %}
+						<img src="/img/background_images/{{data.background_image | default('')}}" width="140px"/>
+					{% endif %}
+				</label>
+				<input id="background_image" class="form-control" type="file" name="background_image" title="Enter the Background Image"></input><br>
+			</div>
+			<div class="col-sm-6">
+				<label for="tour_dossier">Upload a dossier
+					<br>Existing dossier: <br>
+					<a href="/files/{{data.dossier}}">{{data.dossier}}</a><br>
+				</label>
+				<input  id="tour_dossier" class="form-control" type="file" name="dossier" title="Enter the Dossier Link"></input><br>
+			</div>
+		</div>
+		<input id="tour-submit" type="submit" value="Submit">
+	</form>
+</div>
+</div>
+{% include 'sidebar.twig' %}
+</div>
+</div>
+{% include 'admin_footer.twig' %}

@@ -1,0 +1,41 @@
+@media screen and (min-width: $screen-md) {
+    h3 {
+        margin-top: 20px;
+    }
+    .jumbotron {
+        position: relative;
+        h1 {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            color: white;
+            padding: 60px;
+        }
+    }
+    .header-contact {
+        span {
+            float: right;
+            display: block !important;
+            clear:both !important;
+        }
+        img {
+            float:right !important;
+        }
+    }
+    .overlay {
+        font-size: 2.8em !important;
+        line-height: 1em;
+        padding-top: 30px;
+    }
+    .mobile-strap {
+        display: none;
+    }
+    ul.nav {
+        position: absolute;
+        bottom: 0px;
+        left: 160px;
+    }
+    .dropdown:hover .dropdown-menu {
+        display: block;
+    }
+}

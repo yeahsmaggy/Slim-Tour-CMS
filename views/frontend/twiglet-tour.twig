@@ -1,0 +1,13 @@
+{% for tour in tours %}
+  <figure class="col-xs-12 col-sm-6 col-md-4  picture-item" data-groups='["{{tour.type}}"]'>
+    <img src="/img/background_images/thumb-{{tour.background_image|default('na.png') }}" class="my-thumb-class img-responsive" alt="Image for {{tour.title}}" />
+    <div class="picture-item__details">
+      <figcaption class="picture-item__title">
+      <h2 class="article-h2"><a href="{{tour.link}}">{{tour.name}}</h2>
+        </figcaption>
+        <p class="picture-item__tags">
+          {{tour.date|date(("m/d/Y"))}}
+        </p>
+      </div>
+    </figure>
+  {% endfor %}

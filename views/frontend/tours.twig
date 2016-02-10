@@ -1,0 +1,71 @@
+{% extends "base.twig" %}
+{% block content %}
+
+{% if jumbotron is defined %}
+	<div class="jumbotron">
+		{{page.strap | raw}}
+	</div>
+{% endif %}
+<div class="strip bg-grey">
+	<div class=" container">
+		<h1>{{page.title }}</h1>
+		{{page.body | raw}}
+		<select class=" form-control sort-options">
+			<option value="">- choose -</option>
+			<option value="bike">Bike</option>
+			<option value="city">City</option>
+		</select>
+		<select id="sub-bike" class=" form-control">
+			<option value="">- choose -</option>
+			<option value="day-trip">Day Trip</option>
+			<option value="full-tour">Full Tour</option>
+		</select>
+		<div id="grid">
+			{% for tour in tours %}
+				<figure style="margin-bottom:20px !important; " class="col-xs-12 col-sm-6 col-md-4 picture-item" data-groups='["{{tour.type|lower }}"]' data-type="{{tour.type|lower }}" data-subtype="{{tour.subtype|lower}}">
+					<a href="/tour/{{tour.alias}}"><img src="/img/background_images/thumb-{{tour.background_image|default('na.png') }}" class="my-thumb-class img-responsive" alt="Image for {{tour.title}}" />
+						<div class="picture-item__details">
+							<figcaption class="picture-item__title">
+							<h2 style="color:white;" class="article-h2">{{tour.name}}</h2>
+							</figcaption>
+							<p class="picture-item__tags">
+								{{tour.date|date(("m/d/Y"))}}
+							</p>
+						</div>
+					</a>
+				</figure>
+			{% endfor %}
+		</div>
+	</div></div>
+	{# if promoboxes#}
+	{% if promoboxes is defined %}
+		{% for promobox in promoboxes|batch(3) %}
+			<div class="row row-margin-bottom">
+				{% for value in promobox %}
+					<div class="col-xs-12 col-sm-{{layout.promobox_cols}}">
+						<div class="boxinner whitebg">
+							<h2>{{value.title}}</h2>
+							<img class="img-responsive" src="{{value.thumbnail}}"/>
+							{{value.map | raw}}
+							{{value.body | raw}}
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	{% endif %}
+</div>
+{% if sidebar is defined %}
+	{% for item in sidebar %}
+		<div class="col-md-4">
+			<div class="boxinner whitebg">
+				<h2>{{item.title}}</h2>
+				<h3>{{item.subtitle}}</h3>
+				{{item.body | raw}}
+				<img class="img-right img-thumb-140 img-text" src="{{item.img}}">
+			</div>
+		</div>
+	{% endfor %}
+{% endif %}
+
+{% endblock %}

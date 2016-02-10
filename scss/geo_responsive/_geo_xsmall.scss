@@ -1,0 +1,48 @@
+@media screen and (min-width: $screen-xs) {
+    h2 {
+        font-size:2em !important;
+    }
+    .tour-thumb-img {
+        padding-bottom: 20px;
+    }
+    .html_carousel div.slide div {
+        display: none !important;
+    }
+    .nav-strap {
+        display: none;
+    }
+    .mobile-strap {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        display: block;
+        font-style: italic;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+    .ui-tabs .ui-tabs-nav {
+        li {
+            width: 100%;
+        }
+        .ui-tabs-anchor {
+            width: 100%;
+            display: block;
+        }
+    }
+    .header-contact {
+        float:right;
+        margin:10px;
+        font-size: 0.8em;
+        span {
+            display: inline !important;
+            clear: none !important;
+            margin-bottom: 3px;
+        }
+        img {
+            float:none !important;
+           margin-top: -2px !important;
+            margin-left: 5px;
+            padding-right: 10px;
+            width: 23px !important;
+        }
+    }
+}

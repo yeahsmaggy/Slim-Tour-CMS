@@ -1,0 +1,151 @@
+{% extends "base.twig" %}
+{% block content %}{% if jumbotron is defined %}
+	<div class="container">
+		<div class="jumbotron">
+		<blockquote>{{strap | default('No text to display')}}</blockquote>
+		</div>
+	</div>
+{% endif %}
+<div class="strip bg-white">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>{{name | default('No text to display') | raw}}</h1>
+			{{summary | default('No text to display') | raw }}
+		</div>
+	</div>
+</div>
+</div>
+<div class="strip bg-grey">
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>Trip Gallery</h3>
+			{{gallery | raw}}
+		</div>
+	</div>
+</div>
+</div>
+<div class="strip bg-white">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<div id="tabs">
+				<ul>
+					<li><a href="#tabs-1">Itinerary</a></li>
+					<li><a href="#tabs-2">Tour Facts</a></li>
+					<li><a href="#tabs-3">Difficulty Rating</a></li>
+				</ul>
+				<div id="tabs-1">
+					<h3>Itinerary</h3>
+					<p>{{total_days}} activity days (bike, walking etc)</p>
+					<ul class="itinerary-details">
+						{% for day in itinerary %}
+							<li> Day {{loop.index}}  - {{day}}</li>
+						{% endfor  %}
+					</ul>
+				</div>
+				<div id="tabs-2">
+					<h3>Tour Facts</h3>
+					<ul>
+						{% for fact in tour_facts %}
+							<li>{{fact}}
+							</li>
+						{% endfor  %}
+					</ul>
+				</div>
+				<div id="tabs-3">
+					<p><button class="btn btn-primary btn-md" data-toggle="modal" data-target="#myModal">Difficulty Rating {{difficulty_rating}} /5</button></p>{{difficulty_modal}}
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6">
+			<div id="accordion" class="ui-widget-content" style="padding:5px; margin-bottom:10px;">
+				<h3>PRICE INCLUDES:
+				</h3>
+				<div>
+					<h3>A full tour includes the following:</h3>
+					<ul>
+							<li>Professional bilingual guide</li>
+							<li>Professional 4x4 driver for support and equipment transfer</li>
+						<li>Transfers to and from airport</li>
+						<li>All meals, snacks, and water</li>
+						<li>Accommodation</li>
+						<li>First aid</li>
+				</ul>  </div>
+					<h3 style="margin:0px;">PRICE DOES NOT INCLUDE:
+					</h3>
+					<div>
+						<ul>
+							{% if type | lower == 'bike' %}
+								<li>Bike rental package ($30 per day for front suspension rental, or you can bring your own)</li>
+							{% else %}
+							{% endif %}
+							<li>Airfare to Tbilisi, Georgia</li>
+							<li>Travel insurance</li>
+							<li>Drinks and extra snacks</li>
+							<li>Personal gear and expenses</li>
+							<li>Gratuities</li>
+							<li>Excess baggage charges</li>
+							<li>Optional activities not mentioned with inclusions</li>
+							<li>Personal expenses (laundry, alcohol, etc.)</li>
+						</ul> </div>
+					</div>
+					<h3>More Details</h3>
+					<ul>
+						<li><a href="/payment-details">Payment details</a></li>
+						<li><a href="/health-safety">Health and Safety</a></li>
+						{#% if type | lower == 'bike' %#}
+							<li><a href="/equipment">Equipment</a></li>
+						{#% endif %#}
+						{#% if type | lower == 'full-tour' %#}
+							<li><a href="/accommodation">Accommodation</a></li>
+						{#% endif %#}
+					</ul>
+					<h3>Dates & Prices</h3>
+					<table class="prices white-dotted-border-bottom table" style="width:100%;"><tbody>
+						<tr>
+							<th>Tour Code</th>
+							<th>Start Date</th>
+							<th>End Date</th>
+							<th>Price</th>
+							<th>Status</th>
+							<th>Book</th>
+						</tr>
+						<tr><td>{{tour_code}}</td>
+						<td>{% if start_date == '0000-00-00' or null %} <a href="/contact">Enquire for details</a> {% else %} {{start_date}} {% endif %}</td>
+						<td>{% if end_date == '0000-00-00' or null %} <a href="/contact">Enquire for details</a> {% else %} {{end_date}} {% endif %}</td>
+						<td>{% if price == '0' or null %} <a href="/contact">Enquire for details</a> {% else %} {{price}} {% endif %}</td>
+						<td>{#% if live == 'checked' %} live {% else %} needs more people {% endif %#}<a href="/contact">Enquire for details</a></td>
+						<td>
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="RUFX8GRQDQB7N">
+								<input type="hidden" name="item_name" value=" {{name}} ">
+								<input type="image" src="https://www.paypalobjects.com/en_US/GB/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online.">
+								<img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+							</form>
+							<br>	<small>(Refundable if tour doesn't go live)</small><br>
+							<br> If you have any queries please <a href="/contact">contact us</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+{% if sidebar is defined %}
+{% for item in sidebar %}
+<div class="col-md-4">
+	<div class="boxinner whitebg">
+		<h2>{{item.title}}</h2>
+		<h3>{{item.subtitle}}</h3>
+		{{item.body | raw}}
+		<img class="img-right img-thumb-140 img-text" src="{{item.img}}">
+	</div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
