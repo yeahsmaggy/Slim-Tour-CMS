@@ -1,2 +1,2 @@
-# slim_tour_cms_whitelabel
+# Slim Tour CMS
 CMS for Tour Company built with SLIM Microframework
