@@ -14,11 +14,12 @@ The database isn't include please contact me on montane@protonmail.com.
 - composer
 - Laravel Valet 
 
-```composer global require laravel/valet 
-```valet install
+```composer global require laravel/valet```
+```valet install```
 
 ## Install
 
 - clone this repo
 - cd into directory
-```composer install
+
+```composer install```
