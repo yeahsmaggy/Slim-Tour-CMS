@@ -12,15 +12,7 @@ The database isn't include please contact me on montane@protonmail.com.
 - PHP 7+
 - npm
 - composer
-- Laravel Valet 
-
-```bash
-composer global require laravel/valet
-```
-
-```bash
-valet install
-```
+- [Laravel Valet](https://laravel.com/docs/5.6/valet#installation)
 
 If you have a problem 'valet: command not found' check out - https://stackoverflow.com/questions/25373188/laravel-installation-how-to-place-the-composer-vendor-bin-directory-in-your/25373254#25373254
 
