@@ -18,6 +18,9 @@ The database isn't include please contact me on montane@protonmail.com.
 
 ```valet install```
 
+If you have a problem 'valet: command not found' check out - https://stackoverflow.com/questions/25373188/laravel-installation-how-to-place-the-composer-vendor-bin-directory-in-your/25373254#25373254
+
+
 ## Install
 
 - clone this repo
