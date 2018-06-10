@@ -21,4 +21,4 @@ valet install```
 
 - clone this repo
 - cd into directory
-- ```composer install```
+```composer install```
