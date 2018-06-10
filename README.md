@@ -13,6 +13,11 @@ The database isn't include please contact me on montane@protonmail.com.
 - npm
 - composer
 
+### Deployment
+
+- Ruby
+- Capistrano
+
 ## Install
 
 - clone this repo
