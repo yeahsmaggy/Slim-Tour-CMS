@@ -9,12 +9,16 @@ The database isn't include please contact me on montane@protonmail.com.
 ## Reqs
 
 - Mysql 5+ 
-- PHP 5.6+
+- PHP 7+
 - npm
 - composer
+- Laravel Valet 
+
+```composer global require laravel/valet 
+valet install```
 
 ## Install
 
 - clone this repo
 - cd into directory
-- run composer install
+- ```composer install```
