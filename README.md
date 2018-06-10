@@ -26,6 +26,6 @@ If you have a problem 'valet: command not found' check out - https://stackoverfl
 - clone this repo
 - cd into directory
 
-```composer install```
-
-  blah
+```bash
+composer install
+```
