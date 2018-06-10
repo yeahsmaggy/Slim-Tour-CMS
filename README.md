@@ -15,6 +15,7 @@ The database isn't include please contact me on montane@protonmail.com.
 - Laravel Valet 
 
 ```composer global require laravel/valet```
+
 ```valet install```
 
 ## Install
