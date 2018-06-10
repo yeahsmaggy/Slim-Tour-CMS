@@ -1,24 +1,30 @@
 <?php
 
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
+use \Cartalyst\Sentry\Facades\Native\Sentry as Sentry;
+
+require '../vendor/autoload.php';
+
 error_reporting( -1 );
 ini_set( 'display_errors', 'On' );
 
 
-require 'config.php';
+//todo: swap this for .env
+// require 'config.php';
 
-require 'vendor/autoload.php';
+//todo: check this comes in with composer
+//require 'vendor/redbeanphp/rb.php';
 
-class_alias( 'Cartalyst\Sentry\Facades\Native\Sentry', 'Sentry' );
+//todo: check this comes in with composer
+// require_once 'vendor/wideimage/WideImage.php';
 
-require 'vendor/redbeanphp/rb.php';
+//todo: check this comes in with composer
+// require 'vendor/simple_html_dom/simple_html_dom.php';
 
-require_once 'vendor/wideimage/WideImage.php';
 
-include 'class/upload.class.php';
-
-require 'vendor/simple_html_dom/simple_html_dom.php';
-
-include_once 'resources/UberGallery.php';
+include '../src/class/upload.class.php';
+include_once '../src/resources/UberGallery.php';
 
 
 $app = new \Slim\Slim( array(
@@ -34,7 +40,7 @@ define( 'ADMIN_BASE', '/admin' );
 $dsn = 'mysql:dbname='  . DBNAME .   ';host=' . DBHOST ;
 $u = DBUSER;
 $p = DBPASS;
-Cartalyst\Sentry\Facades\Native\Sentry::setupDatabaseResolver( new PDO( $dsn, $u, $p ) );
+Sentry::setupDatabaseResolver( new PDO( $dsn, $u, $p ) );
 $loader = new Twig_Loader_Filesystem( array( './views', './views/admin', './views/frontend' ) );
 $twig = new Twig_Environment( $loader, array(
     'cache' => './compilation_cache',
@@ -58,7 +64,7 @@ if ( $result === false ) {
 
 
 $twig->addGlobal( 'menu',  $menu );
-$currentUser = Cartalyst\Sentry\Facades\Native\Sentry::getUser();
+$currentUser = Sentry::getUser();
 if ( !empty( $currentUser ) ) {
   if ( $currentUser->hasAnyAccess( array( 'admin' ) ) ) {
     $twig->addGlobal( 'has_admin_access', 1 );
@@ -90,10 +96,10 @@ function authenticate( \Slim\Route $route ) {
   $dsn = 'mysql:dbname='.DBNAME.';host='.DBHOST;
   $u = DBUSER;
   $p = DBPASS;
-  Cartalyst\Sentry\Facades\Native\Sentry::setupDatabaseResolver( new PDO( $dsn, $u, $p ) );
+  Sentry::setupDatabaseResolver( new PDO( $dsn, $u, $p ) );
   // check if user logged in
-  if ( Cartalyst\Sentry\Facades\Native\Sentry::check() ) {
-    $currentUser = Cartalyst\Sentry\Facades\Native\Sentry::getUser();
+  if ( Sentry::check() ) {
+    $currentUser = Sentry::getUser();
     if ( !$currentUser->hasAccess( 'admin' ) ) {
       // throw new Exception ('You don\'t have permission to view this page.');
       $app->redirect( '/admin/profile' );
@@ -112,10 +118,10 @@ function authenticate_user( \Slim\Route $route ) {
   $dsn = 'mysql:dbname='.DBNAME.';host='.DBHOST;
   $u = DBUSER;
   $p = DBPASS;
-  Cartalyst\Sentry\Facades\Native\Sentry::setupDatabaseResolver( new PDO( $dsn, $u, $p ) );
+  Sentry::setupDatabaseResolver( new PDO( $dsn, $u, $p ) );
   // check if user logged in
-  if ( Cartalyst\Sentry\Facades\Native\Sentry::check() ) {
-    $currentUser = Cartalyst\Sentry\Facades\Native\Sentry::getUser();
+  if ( Sentry::check() ) {
+    $currentUser = Sentry::getUser();
   }
   else {
     $app->redirect( '/admin/login' );
@@ -123,20 +129,23 @@ function authenticate_user( \Slim\Route $route ) {
 }
 $app->run();
 
-function slugify( $text ) {
-  // replace non letter or digits by -
-  $text = preg_replace( '~[^\\pL\d]+~u', '-', $text );
-  // trim
-  $text = trim( $text, '-' );
-  // transliterate
-  $text = iconv( 'utf-8', 'us-ascii//TRANSLIT', $text );
-  // lowercase
-  $text = strtolower( $text );
-  // remove unwanted characters
-  $text = preg_replace( '~[^-\w]+~', '', $text );
-  if ( empty( $text ) ) {
-    return 'n-a';
-  }
-  return $text;
-}
+
+
+//todo: where is this being used?
+// function slugify( $text ) {
+//   // replace non letter or digits by -
+//   $text = preg_replace( '~[^\\pL\d]+~u', '-', $text );
+//   // trim
+//   $text = trim( $text, '-' );
+//   // transliterate
+//   $text = iconv( 'utf-8', 'us-ascii//TRANSLIT', $text );
+//   // lowercase
+//   $text = strtolower( $text );
+//   // remove unwanted characters
+//   $text = preg_replace( '~[^-\w]+~', '', $text );
+//   if ( empty( $text ) ) {
+//     return 'n-a';
+//   }
+//   return $text;
+// }
 ?>
