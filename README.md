@@ -15,10 +15,10 @@ The database isn't include please contact me on montane@protonmail.com.
 - Laravel Valet 
 
 ```composer global require laravel/valet 
-valet install```
+```valet install
 
 ## Install
 
 - clone this repo
 - cd into directory
-```composer install```
+```composer install
