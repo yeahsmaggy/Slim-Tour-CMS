@@ -9,6 +9,7 @@
         "slim/slim": "2.*" ,
          "cartalyst/sentry": "2.0.*",
         "illuminate/database": "4.0.*",
-        "ircmaxell/password-compat": "1.0.*"
+        "ircmaxell/password-compat": "1.0.*",
+		"vlucas/phpdotenv": "^2.4"
     }
 }
