@@ -26,3 +26,8 @@ The database isn't include please contact me on montane@protonmail.com.
 ```bash
 composer install
 ```
+## Development
+
+```bash
+php -S localhost:8888 -t public
+```
