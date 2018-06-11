@@ -9,7 +9,7 @@ The database isn't include please contact me on montane@protonmail.com.
 ## Reqs
 
 - Mysql 5+ 
-- PHP 7+
+- PHP 5.6+
 - npm
 - composer
 
