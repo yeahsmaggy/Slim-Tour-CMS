@@ -26,6 +26,13 @@ The database isn't include please contact me on montane@protonmail.com.
 ```bash
 composer install
 ```
+
+- import the database file
+
+```bash
+mysql -uroot slimtest < /Users/User1/vprojects/Slim-Tour-CMS/migrations/slimtest.sql
+```
+
 ## Development
 
 ```bash
