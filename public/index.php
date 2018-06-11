@@ -51,7 +51,7 @@ $db_user=getenv('DB_USER');
 $db_pass=getenv('DB_PASS');
 
 // set up database connection
-R::setup( 'mysql:host='. $db_host .';DB_NAME='. $db_name, $db_user, $db_pass );
+R::setup( 'mysql:host='. $db_host .';dbname='. $db_name, $db_user, $db_pass );
 R::debug( TRUE );
 R::freeze( true );
 
@@ -69,7 +69,7 @@ $app = new \Slim\App( $settings );
 // define( 'ADMIN_BASE', '/admin' );
 
 
-$dsn = 'mysql:DB_NAME='  . $db_name .   ';host=' . $db_host ;
+$dsn = 'mysql:dbname='  . $db_name .   ';host=' . $db_host ;
 Sentry::setupDatabaseResolver( new PDO( $dsn, $db_user, $db_pass ) );
 $currentUser = Sentry::getUser();
 

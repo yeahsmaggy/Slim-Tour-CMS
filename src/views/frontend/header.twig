@@ -64,9 +64,12 @@
             About <strong class="caret"></strong>
           </a>
           <ul class="dropdown-menu">
-            {% for i in menu %}
-              <li><a href="/{{i.alias}}">{{i.title}}</a>
-            {% endfor %}
+            {% if menu is defined %}
+              {% for i in menu %}
+                <li><a href="/{{i.alias}}">{{i.title}}</a>
+              {% endfor %}
+            {% endif %}
+
           </ul>
         </li>
         <li>

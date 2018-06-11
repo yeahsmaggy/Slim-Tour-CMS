@@ -13,40 +13,45 @@ use \RedBeanPHP\R as R;
 
 
 $app->get( '/', function () use( $app, $twig ) {
-
-
 		//featured tour
-		$data['featured'] = R::findAll( 'tours', 'WHERE type="bike" AND featured="checked"' );
+		$data['featured'] = R::findAll( 'products', 'WHERE type="bike" AND featured="checked"' );
+
 		//add published=1 back in
-		$db = new mysqli( BLOGDBHOST, BLOGDBUSER, BLOGDBPASS, BLOGDBNAME);
-		if ( $db->connect_errno > 0 ) {
-			die( 'Unable to connect to database [' . $db->connect_error . ']' );
-		}
-		// then fetch and close the statement
-		$query = "SELECT *  FROM node WHERE status = 1 ORDER BY created DESC LIMIT 5 ";
-		$result = $db->query( $query );
-		if ( $result === false ) {
-			trigger_error( 'Wrong SQL: ' . $query . ' Error: ' . $db->error, E_USER_ERROR );
-		} else {
-			$result->data_seek( 0 );
-			while ( $row = $result->fetch_assoc() ) {
-				$nodes[]=$row;
-			}
-		}
+		// $db = new mysqli( BLOGDBHOST, BLOGDBUSER, BLOGDBPASS, BLOGDBNAME);
+		// if ( $db->connect_errno > 0 ) {
+		// 	die( 'Unable to connect to database [' . $db->connect_error . ']' );
+		// }
+		// // then fetch and close the statement
+		// $query = "SELECT *  FROM node WHERE status = 1 ORDER BY created DESC LIMIT 5 ";
+		// $result = $db->query( $query );
+		// if ( $result === false ) {
+		// 	trigger_error( 'Wrong SQL: ' . $query . ' Error: ' . $db->error, E_USER_ERROR );
+		// } else {
+		// 	$result->data_seek( 0 );
+		// 	while ( $row = $result->fetch_assoc() ) {
+		// 		$nodes[]=$row;
+		// 	}
+		// }
 		//homepage promoboxes
-		$promoboxes = R::findAll( 'tours', 'WHERE type="bike" ORDER BY date_modified DESC LIMIT 4' );
+		$promoboxes = R::findAll( 'products', 'WHERE type="bike" ORDER BY date_modified DESC LIMIT 4' );
 		$strapline = '';
 		$welcome_text = '';
 		$data =  array(
 			'promoboxes' => $promoboxes,
-			'nodes'=>$nodes,
+			// 'nodes'=>$nodes,
 			'strapline'=>$strapline,
 			'welcome_text'=>$welcome_text,
 			'data'=>$data
 		) ;
+
+
 		$template = $twig->loadTemplate( 'index.twig' );
-		echo $template->render(
-			$data );
+
+
+		echo $template->render($data);
+
+
+
 	} );
 
 

@@ -1,5 +1,7 @@
 {% extends "base.twig" %}
 {% block content %}
+
+
   <!-- Full Page Image Background Carousel Header -->
   <div id="myCarousel" class="carousel slide hidden-xs" data-ride="carousel">
     <!-- Indicators -->
@@ -14,7 +16,7 @@
         <div class="item {% if loop.first %} active {% endif %}">
         <img src="/img/background_images/slide-{{tour.background_image}}" class="img-responsive"/>
         <div class="carousel-caption">
-          <h2><a href="/tour/{{tour.alias}}/">{{tour.strap}}</a></h2>
+          <h2><a href="/tour/{#{tour.alias}#}/">{{tour.strap}}</a></h2>
         </div>
       </div>
     {% endfor %}
@@ -59,7 +61,7 @@
         {% for value in promobox %}
           <div class="col-xs-12 col-sm-3" >
             <div class="" style="min-height:460px;" >
-              <a href="/tour/{{value.alias}}">
+              <a href="/tour/{#{value.alias}#}">
                 <img src="/img/background_images/thumb-{{value.background_image}}"  class="img-responsive" alt="{{value.name}}"/></br>
                 <h3>{{value.name}}</h3>
                 {{value.strap}}
@@ -74,4 +76,6 @@
     {% endif %}
   </div>
 </div>
+
+
 {% endblock %}
