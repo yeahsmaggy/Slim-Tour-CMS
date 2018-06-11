@@ -1,7 +1,8 @@
 <?php
+use \RedBeanPHP\R as R;
 
 
-$app->get( '/tours(/)', 'authenticate', function () use( $app, $twig ) {
+$app->get( '/admin/tours(/)', 'authenticate', function () use( $app, $twig ) {
     $currentUser = Sentry::getUser();
     try {
       $data = R::findAll( 'tours' );
@@ -17,7 +18,7 @@ $app->get( '/tours(/)', 'authenticate', function () use( $app, $twig ) {
   } );
 
 
-$app->post( '/tours', function () use( $app ) {die;
+$app->post( '/admin/tours', function () use( $app ) {die;
     $request = $app->request();
     $body = $request->getBody();
     // store tour record
@@ -27,7 +28,7 @@ $app->post( '/tours', function () use( $app ) {die;
   } );
 
 
-$app->get( '/tour/:id(/)', 'authenticate', function ( $tour_id ) use( $app, $twig ) {
+$app->get( '/admin/tour/:id(/)', 'authenticate', function ( $tour_id ) use( $app, $twig ) {
     $currentUser = Sentry::getUser();
     $itinerary = '';
     if ( !empty( $_GET['error'] ) ) {

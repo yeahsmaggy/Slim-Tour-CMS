@@ -1,7 +1,20 @@
 <?php
+use Slim\Http\Request;
+use Slim\Http\Response;
+use \RedBeanPHP\R as R;
+
+// Routes
+// $app->get('/[{name}]', function (Request $request, Response $response, array $args) {
+//     // Sample log message
+//     $this->logger->info("Slim-Skeleton '/' route");
+//     // Render index view
+//     return $this->renderer->render($response, 'index.phtml', $args);
+// });
 
 
 $app->get( '/', function () use( $app, $twig ) {
+
+
 		//featured tour
 		$data['featured'] = R::findAll( 'tours', 'WHERE type="bike" AND featured="checked"' );
 		//add published=1 back in
