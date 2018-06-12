@@ -37,7 +37,7 @@ ini_set( 'display_errors', 'On' );
 
 
 include '../src/class/upload.class.php';
-include_once '../src/resources/UberGallery.php';
+include_once '../public/resources/UberGallery.php';
 
 $dotenv = new Dotenv\Dotenv('../');
 $dotenv->load();

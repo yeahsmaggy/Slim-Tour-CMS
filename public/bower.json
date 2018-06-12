@@ -22,5 +22,9 @@
   ],
   "dependencies": {
     "jquery": ">= 1.9.0"
+  },
+  "devDependencies": {
+    "imagesloaded": "^4.1.4",
+    "shufflejs": "^5.1.2"
   }
 }

@@ -9,7 +9,7 @@
         </button>
         <div class="site-name">
           <a class="navbar-brand" href="/">
-            <img src="/img/full-logo.png" alt="Georiders Mountain Bike and Bicycle Tours in Georgia"/>
+            <img src="/img/full-logo.png" alt="Your tour brandname"/>
           </a>
         </div>
       </div>
@@ -22,8 +22,8 @@
         </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
       </div>
       <div id="header-contact" class="hidden-xs header-box">
-        <span class="header-telephone-country1"><img src="/img/iconflags/flag1.png" alt="">num 1</span>
-        <span class="header-telephone-country2"><img src="/img/iconflags/flag2.png" alt="">num 2</span>
+        <span class="header-telephone-country1"><img src="/img/iconflags/geflag.png" alt="">num 1</span>
+        <span class="header-telephone-country2"><img src="/img/iconflags/ukflag.png" alt="">num 2</span>
         <span class="header-email"><img src="/img/iconflags/email_icon.png" alt=""><a href="site email">site email address</a></span>
       </div>
       <div id="header-social" class="hidden-xs header-box">
@@ -47,14 +47,18 @@
         s.parentNode.insertBefore(gcse, s);
         })();
         </script>
-        <script type="text/javascript">
+                {% if background_image is defined %}
+
+<script type="text/javascript">
         $(function() {
         $.backstretch(["/img/background_images/{{background_image}}"]);
         $( "#accordion" ).accordion({
         collapsible: true
         });
         });
+
         </script>
+          {% endif %}
       <gcse:search></gcse:search>
     </div>
     <div class="navbar-collapse collapse">
