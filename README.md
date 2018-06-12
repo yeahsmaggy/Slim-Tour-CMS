@@ -41,4 +41,5 @@ php -S localhost:8888 -t public
 
 ## References
 
-Based partly on https://github.com/slimphp/Slim-Skeleton/
+- Based partly on https://github.com/slimphp/Slim-Skeleton/
+- [Introduction to SlimPHP by Michael Heap](https://michaelheap.com/series/slimphp-introduction/)
