@@ -1,4 +1,7 @@
 <?php
+use Slim\Http\Request as Request;
+use Slim\Http\Response as Response;
+
 
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
