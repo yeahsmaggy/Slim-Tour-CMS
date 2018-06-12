@@ -1,8 +1,4 @@
 <?php
-use Slim\Http\Request as Request;
-use Slim\Http\Response as Response;
-
-
 if (PHP_SAPI == 'cli-server') {
     // To help the built-in PHP dev server, check if the request was actually for
     // something which should probably be served as a static file
@@ -25,12 +21,6 @@ use \RedBeanPHP\R as R;
 error_reporting( -1 );
 ini_set( 'display_errors', 'On' );
 
-
-//todo: swap this for .env
-// require 'config.php';
-
-//todo: check this comes in with composer
-//require 'vendor/redbeanphp/rb.php';
 
 //todo: check this comes in with composer
 // require_once 'vendor/wideimage/WideImage.php';

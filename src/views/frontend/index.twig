@@ -1,7 +1,7 @@
 {% extends "base.twig" %}
 {% block content %}
 
-
+{% if data.featured|length > 0 %}
   <!-- Full Page Image Background Carousel Header -->
   <div id="myCarousel" class="carousel slide hidden-xs" data-ride="carousel">
     <!-- Indicators -->
@@ -29,6 +29,8 @@
     <span class="icon-next"></span>
   </a>
 </div>
+{% endif %}
+{% if nodes|length > 0 %}
 <div class="strip bg-grey">
   <div class="container ">
     <div class="row">
@@ -52,6 +54,10 @@
   </div>
 </div>
 </div>
+{% endif %}
+
+
+
 <div class="strip whitebg">
 <div class="container ">
   {# if tour_promoboxes#}

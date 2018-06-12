@@ -8,12 +8,9 @@
 //     return $this->renderer->render($response, 'index.phtml', $args);
 // });
 
-$app->get('/', "controller.home:hello" );
+$app->get('/', "controller.home:show" );
 
-// $app->get( '/', function () use( $app, $twig ) {} );
-
-
-$app->get( '/tours(/)', function() use ( $app, $twig ) {
+$app->get( '/tours', function() use ( $app, $twig ) {
 		$tours = R::findAll( 'tours' , 'WHERE published="1"' );
 		foreach ( $tours as $tour ) {
 			$data['tours'][]=array( 'name'=>$tour->name,
