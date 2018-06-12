@@ -38,3 +38,7 @@ mysql -uroot slimtest < /Users/User1/vprojects/Slim-Tour-CMS/migrations/slimtest
 ```bash
 php -S localhost:8888 -t public
 ```
+
+## References
+
+Based partly on https://github.com/slimphp/Slim-Skeleton/
