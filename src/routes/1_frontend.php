@@ -8,8 +8,9 @@
 //     return $this->renderer->render($response, 'index.phtml', $args);
 // });
 
-$app->get('/', "controller.home:show" );
-
+$app->get('/', "HomeController:show" );
+// $app->get('/product/:id', "ProductController:show" );
+$twig = '';
 $app->get( '/tours', function() use ( $app, $twig ) {
 		$tours = R::findAll( 'tours' , 'WHERE published="1"' );
 		foreach ( $tours as $tour ) {
@@ -25,33 +26,33 @@ $app->get( '/tours', function() use ( $app, $twig ) {
 	} );
 
 
-$app->get( '/tour/:slug(/)', function( $slug ) use ( $app, $twig ) {
-		$tour = R::findOne( 'tours', 'alias=?', [$slug] );
-		require 'difficulty_explain_modal.php';
-		$data = array(
-			'strap'=>$tour->strap,
-			'name'=>$tour->name,
-			'summary'=>$tour->summary,
-			'gallery'=>UberGallery::init()->createGallery($tour['gallery_path'] ),
-			'total_days'=>$tour->total_days,
-			'itinerary_details'=>unserialize( $tour->itinerary ),
-			'itinerary'=>unserialize($tour->itinerary),
-			'tour_facts'=>unserialize( $tour->tour_facts ),
-			'difficulty_rating'=>$tour->difficulty_rating,
-			'difficulty_modal'=>$tour->difficulty_modal,
-			'code'=>$tour->code,
-			'start_date'=>$tour->start_date,
-			'end_date'=>$tour->end_date,
-			'price'=>$tour->price,
-			'book_path'=>$tour->book_path,
-			'name'=>$tour->name,
-			'jumbotron'=>1,
-			'tour_code'=>$tour->tour_code,
-			'background_image'=>$tour->background_image,
-		);
-		$template = $twig->loadTemplate( 'tour.twig' );
-		echo $template->render( $data );
-	} );
+// $app->get( '/tour/:slug(/)', function( $slug ) use ( $app, $twig ) {
+// 		$tour = R::findOne( 'tours', 'alias=?', [$slug] );
+// 		require 'difficulty_explain_modal.php';
+// 		$data = array(
+// 			'strap'=>$tour->strap,
+// 			'name'=>$tour->name,
+// 			'summary'=>$tour->summary,
+// 			'gallery'=>UberGallery::init()->createGallery($tour['gallery_path'] ),
+// 			'total_days'=>$tour->total_days,
+// 			'itinerary_details'=>unserialize( $tour->itinerary ),
+// 			'itinerary'=>unserialize($tour->itinerary),
+// 			'tour_facts'=>unserialize( $tour->tour_facts ),
+// 			'difficulty_rating'=>$tour->difficulty_rating,
+// 			'difficulty_modal'=>$tour->difficulty_modal,
+// 			'code'=>$tour->code,
+// 			'start_date'=>$tour->start_date,
+// 			'end_date'=>$tour->end_date,
+// 			'price'=>$tour->price,
+// 			'book_path'=>$tour->book_path,
+// 			'name'=>$tour->name,
+// 			'jumbotron'=>1,
+// 			'tour_code'=>$tour->tour_code,
+// 			'background_image'=>$tour->background_image,
+// 		);
+// 		$template = $twig->loadTemplate( 'tour.twig' );
+// 		echo $template->render( $data );
+// 	} );
 
 
 $app->get( '/contact(/)', function( ) use ( $app, $twig ) {

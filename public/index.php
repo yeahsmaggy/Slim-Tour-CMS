@@ -49,8 +49,7 @@ R::debug( TRUE );
 R::freeze( true );
 
 
-$settings = require __DIR__ . '/../src/settings.php';
-$app = new \Slim\App( $settings );
+// $settings = require __DIR__ . '/../src/settings.php';
 
 //set default conditions for route parameters
 // \Slim\Route::setDefaultConditions( array(
@@ -94,7 +93,7 @@ if ( $result === false ) {
 require __DIR__ . '/../src/middleware.php';
 
 
-$twig->addGlobal( 'menu',  $menu );
+// $twig->addGlobal( 'menu',  $menu );
 
 
 if ( !empty( $currentUser ) ) {
