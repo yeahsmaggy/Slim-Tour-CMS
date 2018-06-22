@@ -1,44 +1,53 @@
 parameters:
-  slim.config.httpVersion: '1.1'
-  slim.config.outputBuffering: append
-  slim.config.determineRouteBeforeAppMiddleware: 0
-  slim.config.displayErrorDetails: 0
-  slim.config.response.defaultContentType: text/html; charset=UTF-8
-  slim.config.response.defaultStatus: 200
-  slim.config.response.chunkSize: 4096
+  httpVersion: '1.1'
+  debug: 1
+  outputBuffering: append
+  determineRouteBeforeAppMiddleware: 1
+  displayErrorDetails: 1
+  response.defaultContentType: text/html; charset=UTF-8
+  response.defaultStatus: 200
+  response.chunkSize: 4096
 
 #  You may want to add/amend these response headers for your application
   slim.config.response.defaultheaders:
     Content-Type: %slim.config.response.defaultContentType%
 
 #  These are default classes as used by Slim. Change at your own risk
-  slim.config.className.settings: Slim\Collection
-  slim.config.classname.environment: Slim\Http\Environment
-  slim.config.className.request: Slim\Http\Request
-  slim.config.className.response: Slim\Http\Response
-  slim.config.className.headers: Slim\Http\Headers
-  slim.config.className.router: Slim\Router
-  slim.config.className.foundHandler: Slim\Handlers\Strategies\RequestResponse
-  slim.config.className.notFoundHandler: Slim\Handlers\NotFound
-  slim.config.className.errorHandler: Slim\Handlers\Error
-  slim.config.className.notAllowedHandler: Slim\Handlers\NotAllowed
-  slim.config.className.callableResolver: Slim\CallableResolver
+  className.settings: Slim\Collection
+  classname.environment: Slim\Http\Environment
+  className.request: Slim\Http\Request
+  className.response: Slim\Http\Response
+  className.headers: Slim\Http\Headers
+  className.router: Slim\Router
+  className.foundHandler: Slim\Handlers\Strategies\RequestResponse
+  className.notFoundHandler: Slim\Handlers\NotFound
+  className.errorHandler: Slim\Handlers\Error
+  className.notAllowedHandler: Slim\Handlers\NotAllowed
+  className.callableResolver: Slim\CallableResolver
 
 services:
   # Core Services
   TwigExtension:
     class: \Slim\Views\TwigExtension
     arguments: ["@router", "/"]
+  TwigExtensionDebug:
+    class: \Twig_Extension_Debug
   View:
     class: \Slim\Views\Twig
-    arguments: [["../src/views", "../src/views/admin", "../src/views/frontend"], [{'cache':'./compilation_cache'}, {'debug':true}]]
+    arguments: [["../src/views", "../src/views/admin", "../src/views/frontend"], {"cache": "./compilation_cache", "debug": "true"} ]
     calls:
       - [addExtension, ['@TwigExtension']]
+      - [addExtension, ['@TwigExtensionDebug']]
+  ProductTransformer:
+    class: \Src\Transformers\Products\ProductTransformer
 
   # Controllers
   HomeController:
     class:     \Src\Controllers\HomeController
     arguments: ['@view']
-  # ProductController:
-  #   class:     \Src\Controllers\ProductController
-  #   arguments: ['@view']
+  PageController:
+    class:     \Src\Controllers\PageController
+    arguments: ['@view']
+  ProductController:
+    class:     \Src\Controllers\ProductController
+    arguments: ['@view', '@productTransformer']

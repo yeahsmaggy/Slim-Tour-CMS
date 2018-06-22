@@ -14,7 +14,8 @@
         "flexsounds/slim-symfony-di-container": "^1.0",
         "symfony/config": "^3.4",
         "symfony/yaml": "^3.4",
-        "symfony/dependency-injection": "^3.4"
+        "symfony/dependency-injection": "^3.4",
+        "twig/extensions": "^1.5"
     },
      "require-dev": {
         "phpunit/phpunit": ">=4.8 < 6.0"

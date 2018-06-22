@@ -1,6 +1,5 @@
 {% extends "base.twig" %}
 {% block content %}
-
 {% if jumbotron is defined %}
 	<div class="jumbotron">
 		{{page.strap | raw}}
@@ -21,7 +20,9 @@
 			<option value="full-tour">Full Tour</option>
 		</select>
 		<div id="grid">
-			{% for tour in tours %}
+			{{dump(products)}}
+
+			{% for tour in products %}
 				<figure style="margin-bottom:20px !important; " class="col-xs-12 col-sm-6 col-md-4 picture-item" data-groups='["{{tour.type|lower }}"]' data-type="{{tour.type|lower }}" data-subtype="{{tour.subtype|lower}}">
 					<a href="/tour/{{tour.alias}}"><img src="/img/background_images/thumb-{{tour.background_image|default('na.png') }}" class="my-thumb-class img-responsive" alt="Image for {{tour.title}}" />
 						<div class="picture-item__details">

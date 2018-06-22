@@ -50,6 +50,7 @@ R::freeze( true );
 
 
 // $settings = require __DIR__ . '/../src/settings.php';
+// $app = new \Slim\App( $settings );
 
 //set default conditions for route parameters
 // \Slim\Route::setDefaultConditions( array(
@@ -106,11 +107,14 @@ if ( ! Sentry::check() ) {
 }else {
   $twig->addGlobal( 'logged_in', 1 );
 }
-$routeFiles = (array) glob( '../src/routes/*.php' );
-foreach ( $routeFiles as $routeFile ) {
-  require $routeFile;
-}
+//$routeFiles = (array) glob( '../src/routes/*.php' );
+//foreach ( $routeFiles as $routeFile ) {
+//  require $routeFile;
+//}
+require '../src/routes/routes.php';
+
 
 $app->run();
+
 
 ?>

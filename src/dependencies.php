@@ -13,7 +13,7 @@ $container = new ContainerBuilder();
 //     return $logger;
 // };
 
-$loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../config'));
+$loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../config/'));
 $loader->load('services.yml');
 $app = new \Slim\App( $container );
 
