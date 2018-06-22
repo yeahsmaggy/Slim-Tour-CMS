@@ -43,3 +43,4 @@ php -S localhost:8888 -t public
 
 - Based partly on https://github.com/slimphp/Slim-Skeleton/
 - [Introduction to SlimPHP by Michael Heap](https://michaelheap.com/series/slimphp-introduction/)
+- [IBM Slim Tutorial](https://www.ibm.com/developerworks/library/x-slim-rest/index.html)
