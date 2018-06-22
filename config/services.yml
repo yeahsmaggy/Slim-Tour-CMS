@@ -51,3 +51,6 @@ services:
   ProductController:
     class:     \Src\Controllers\ProductController
     arguments: ['@view', '@productTransformer']
+  AuthController:
+    class:     \Src\Controllers\AuthController
+    arguments: ['@view']
